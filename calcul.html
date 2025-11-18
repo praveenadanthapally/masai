@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Masai Calculator</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      background: #fff;
+      border: 2px solid #333;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+      padding: 20px;
+      width: 320px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #4d96ff;
+    }
+    .display {
+      width: 100%;
+      height: 60px;
+      border: 2px solid #999;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      font-size: 24px;
+      text-align: right;
+      padding: 10px;
+      box-sizing: border-box;
+      background: #f0f0f0;
+    }
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+    .buttons button {
+      height: 60px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      background: #e0f7fa;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+    .buttons button:hover {
+      background: #b2ebf2;
+    }
+    .buttons button.operator {
+      background: #ffd93d;
+    }
+    .buttons button.operator:hover {
+      background: #ffca28;
+    }
+    .buttons button.equal {
+      grid-column: span 2;
+      background: #4d96ff;
+      color: #fff;
+    }
+    .buttons button.equal:hover {
+      background: #1976d2;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Masai</h1>
+    <div class="display">0</div>
+    <div class="buttons">
+      <button>7</button>
+      <button>8</button>
+      <button>9</button>
+      <button class="operator">/</button>
+      <button>4</button>
+      <button>5</button>
+      <button>6</button>
+      <button class="operator">*</button>
+      <button>1</button>
+      <button>2</button>
+      <button>3</button>
+      <button class="operator">-</button>
+      <button>0</button>
+      <button>.</button>
+      <button class="equal">=</button>
+      <button class="operator">+</button>
+    </div>
+  </div>
+</body>
+</html>
