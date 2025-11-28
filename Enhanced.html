@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h3>Todo List</h3>
+
+<input id="task" placeholder="Task">
+<button onclick="addTask()">Add</button>
+<br><br>
+
+<input id="search" placeholder="Search">
+<ul id="list"></ul>
+
+<script>
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+show(tasks);
+
+function addTask(){
+  let text = task.value.trim();
+  if(!text){ alert("Enter task"); return; }
+  tasks.push({id:Date.now(), text, done:false});
+  save();
+}
+
+function toggle(id){
+  tasks = tasks.map(t=>t.id===id? {...t,done:!t.done}:t);
+  save();
+}
+
+function removeTask(id){
+  tasks = tasks.filter(t=>t.id!==id);
+  save();
+}
+
+function save(){
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+  show(tasks);
+}
+
+function show(arr){
+  list.innerHTML="";
+  arr.forEach(t=>{
+    let li=document.createElement("li");
+    li.textContent=t.text;
+    if(t.done) li.style.textDecoration="line-through";
+
+    let c=document.createElement("button");
+    c.textContent="✓";
+    c.onclick=()=>toggle(t.id);
+
+    let d=document.createElement("button");
+    d.textContent="X";
+    d.onclick=()=>removeTask(t.id);
+
+    li.append(c,d);
+    list.append(li);
+  });
+}
+
+search.oninput=function(){
+  let s=this.value.toLowerCase();
+  show(tasks.filter(t=>t.text.toLowerCase().includes(s)));
+};
+</script>
+
+</body>
+</html>
